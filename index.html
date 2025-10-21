@@ -6,64 +6,112 @@
 <title>Pemilu 1955 — Portal Edukasi Klasik</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== Umum ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Merriweather', serif; background:#f5f0e1; color:#2e2a24; line-height:1.8; }
 a { text-decoration:none; color:inherit; }
+html { scroll-behavior: smooth; }
 
+/* ===== Header ===== */
 header {
   position:fixed; top:0; left:0; right:0;
   background:rgba(245,240,225,0.95); backdrop-filter:blur(6px);
   display:flex; justify-content:space-between; align-items:center;
   padding:10px 20px; border-bottom:4px solid #ff0000; z-index:999;
 }
-header .logo { font-weight:700; font-size:1.5rem; color:#ff0000; }
-header nav a { margin:0 8px; padding:6px 12px; border-radius:6px; transition:0.3s; }
-header nav a:hover { background:#d6cfc0; }
 
+header .logo { font-weight:700; font-size:1.5rem; color:#ff0000; }
+
+nav { display:flex; flex-wrap:wrap; align-items:center; }
+nav a { margin:0 8px; padding:6px 12px; border-radius:6px; transition:0.3s; }
+nav a:hover { background:#d6cfc0; }
+
+/* Hamburger button */
+.hamburger { display:none; font-size:1.8rem; cursor:pointer; }
+
+/* ===== Hero ===== */
 .hero {
   margin-top:70px; padding:80px 20px;
   background: linear-gradient(180deg, #ff0000 0%, #f5f0e1 100%);
   text-align:center; color:#2e2a24;
 }
-.hero h1 { font-size:3rem; margin-bottom:20px; }
+.hero h1 { font-size:3rem; margin-bottom:20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
 .hero p { max-width:800px; margin:0 auto 30px; font-size:1.1rem; }
 
+/* ===== Section ===== */
 section { padding:80px 20px; max-width:900px; margin:0 auto; }
 section h2 { font-size:2.2rem; margin-bottom:20px; border-left:6px solid #bfa86b; padding-left:12px; }
 section .content { background:#f0e8d5; padding:25px; border-radius:12px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); margin-bottom:25px; font-size:1rem; }
 
+/* ===== Timeline ===== */
 .timeline { position:relative; margin:40px 0; }
 .timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#bfa86b; border-radius:4px; }
 .tl-item { position:relative; padding-left:60px; margin-bottom:25px; }
 .tl-item .date { font-weight:700; color:#7d5e2d; margin-bottom:6px; font-size:1rem; }
 .tl-item .desc { font-size:0.95rem; }
 
+/* ===== Gallery ===== */
 .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
 .gallery img { width:100%; height:150px; object-fit:cover; border-radius:8px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s; }
 .gallery img:hover { transform:scale(1.05); }
 
+/* ===== Accordion ===== */
 .accordion .q { cursor:pointer; padding:14px; border-radius:8px; background:#dcd1b2; margin-bottom:8px; font-weight:600; font-size:1rem; }
 .accordion .a { padding:14px; margin-bottom:10px; display:none; background:#f0e8d5; border-radius:8px; font-size:0.95rem; }
 
+/* ===== Quiz ===== */
 .quiz .options { display:grid; gap:12px; margin-top:12px; }
 .option { padding:12px; background:#dcd1b2; border-radius:8px; cursor:pointer; transition:0.3s; }
 .option:hover { background:#c5b484; }
 .option.correct { background:rgba(34,197,94,0.2); border:1px solid #22c55e; }
 .option.wrong { background:rgba(239,68,68,0.2); border:1px solid #ef4444; }
 
+/* ===== Footer ===== */
 footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9rem; border-top:2px solid #d6cfc0; }
 
+/* ===== Profil ===== */
 .profile { display:flex; gap:20px; align-items:center; margin-top:20px; }
 .profile img { width:120px; border-radius:50%; border:2px solid #bfa86b; }
 .profile-info { font-size:0.95rem; max-width:700px; }
 
+/* ===== Responsif ===== */
+@media (max-width: 768px) {
+  /* Hamburger */
+  .hamburger { display:block; }
+  nav { display:none; width:100%; flex-direction:column; margin-top:10px; }
+  nav.show { display:flex; }
+  nav a { margin:6px 0; }
+  /* Hero */
+  .hero { padding: 60px 15px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  /* Section */
+  section { padding: 50px 15px; }
+  section h2 { font-size: 1.8rem; }
+  /* Timeline */
+  .timeline { padding-left: 10px; }
+  .timeline::before { left:10px; width:3px; }
+  .tl-item { padding-left:40px; }
+  /* Gallery */
+  .gallery img { height: 120px; }
+  /* Accordion */
+  .accordion .q, .accordion .a { font-size: 0.95rem; }
+  /* Profil */
+  .profile { flex-direction: column; text-align: center; }
+  .profile img { width:100px; }
+  .profile-info { max-width:100%; }
+  /* Quiz */
+  #kuis .options { gap:8px; }
+  .option { font-size:0.9rem; padding:10px; }
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Pemilu 1955</div>
-  <nav>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+  <nav id="navMenu">
     <a href="#beranda">Beranda</a>
     <a href="#pengantar">Pengantar</a>
     <a href="#latar">Latar</a>
@@ -143,7 +191,7 @@ footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9
     <img src="https://kota-tangerang.kpu.go.id/public/kota-tangerang/koleksigambar/1635743735pemilu%201955.jpg" alt="Kampanye Pemilu 1955">
     <img src="https://asset.kompas.com/crops/4ecJcWnAasrPn8OHHwyTtU0Yaf0=/0x0:750x500/1200x800/data/photo/2022/01/15/61e2bde5c01d9.png" alt="Pemungutan Suara 1955">
     <img src="https://kab-banjarnegara.kpu.go.id/public/kab-banjarnegara/koleksigambar/1741490780_0463db5ad7ef5246056f.jpg" alt="Partai Politik 1955">
-    <img src="https://cdn1-production-images-kly.akamaized.net/kGepUaGH8Mw4JFJ7Gt7ZhqUJgHk=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4717549/original/089217700_1705394052-Pemilu_1955_-_Bawaslu.jpeg" alt="Konstituante 1955">
+    <img src="https://cdn1-production-images-kly.akamaized.net/kGepUaGH8Mw4JFJ7Gt7ZhqUJgHk=/1280x720/smart/filters:quality(75):strip_icc():format/webp)/kly-media-production/medias/4717549/original/089217700_1705394052-Pemilu_1955_-_Bawaslu.jpeg" alt="Konstituante 1955">
   </div>
 </section>
 
@@ -167,10 +215,9 @@ footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9
   <h2>Tentang Pembuat</h2>
   <div class="content">
     <div class="profile">
-      <img src="https://res.cloudinary.com/dceylrkji/image/upload/v1761064428/WhatsApp_Image_2025-10-21_at_23.32.51_zulhvj.jpg " alt="Profil Pembuat">
+      <img src="https://res.cloudinary.com/dceylrkji/image/upload/v1761064428/WhatsApp_Image_2025-10-21_at_23.32.51_zulhvj.jpg" alt="Profil Pembuat">
       <div class="profile-info">
         <p><strong>Adistira Rizqi Ramadani.</strong> — Siswa SMK Negeri 69 Jakarta, Jurusan Sistem Informasi Jaringan Dan Aplikasi.</p>
-
         <p>"Pemilu adalah peluang untuk mengubah masa depan, mari kita lakukan dengan damai dan penuh kebijaksanaan."</p>
       </div>
     </div>
@@ -194,6 +241,11 @@ footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9
 </footer>
 
 <script>
+// Navbar hamburger
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', ()=>{ navMenu.classList.toggle('show'); });
+
 // Accordion
 document.querySelectorAll('.accordion .q').forEach(q=>{
   q.addEventListener('click',()=>{
@@ -225,11 +277,16 @@ function loadQ(){
   if(current>=quiz.length){qnum.textContent='Kuis Selesai'; qtext.textContent='Skor Anda: '+score+'/'+quiz.length; opts.innerHTML=''; feedback.innerHTML=''; nextQ.style.display='none'; return;}
   qnum.textContent='Soal '+(current+1)+' / '+quiz.length;
   qtext.textContent=quiz[current].q;
-  opts.innerHTML='';
-  feedback.innerHTML='';
+  opts.innerHTML=''; feedback.innerHTML='';
   quiz[current].opts.forEach((o,i)=>{
     const b=document.createElement('div'); b.textContent=o; b.className='option';
-    b.onclick=()=>{if(b.classList.contains('selected')) return; b.classList.add('selected'); if(i===quiz[current].ans){b.classList.add('correct'); feedback.textContent='Benar!'; score++;}else{b.classList.add('wrong'); feedback.textContent='Salah!';} document.getElementById('score').textContent=score;}
+    b.onclick=()=>{
+      if(b.classList.contains('selected')) return;
+      document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected','correct','wrong'));
+      b.classList.add('selected');
+      if(i===quiz[current].ans){b.classList.add('correct'); feedback.textContent='Benar!'; score++;}else{b.classList.add('wrong'); feedback.textContent='Salah!';}
+      document.getElementById('score').textContent=score;
+    };
     opts.appendChild(b);
   });
 }
