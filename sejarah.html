@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pemilu 1955 — Portal Edukasi Klasik</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Merriweather', serif; background:#f5f0e1; color:#2e2a24; line-height:1.8; }
+a { text-decoration:none; color:inherit; }
+
+header {
+  position:fixed; top:0; left:0; right:0;
+  background:rgba(245,240,225,0.95); backdrop-filter:blur(6px);
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; border-bottom:4px solid #ff0000; z-index:999;
+}
+header .logo { font-weight:700; font-size:1.5rem; color:#ff0000; }
+header nav a { margin:0 8px; padding:6px 12px; border-radius:6px; transition:0.3s; }
+header nav a:hover { background:#d6cfc0; }
+
+.hero {
+  margin-top:70px; padding:80px 20px;
+  background: linear-gradient(180deg, #ff0000 0%, #f5f0e1 100%);
+  text-align:center; color:#2e2a24;
+}
+.hero h1 { font-size:3rem; margin-bottom:20px; }
+.hero p { max-width:800px; margin:0 auto 30px; font-size:1.1rem; }
+
+section { padding:80px 20px; max-width:900px; margin:0 auto; }
+section h2 { font-size:2.2rem; margin-bottom:20px; border-left:6px solid #bfa86b; padding-left:12px; }
+section .content { background:#f0e8d5; padding:25px; border-radius:12px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); margin-bottom:25px; font-size:1rem; }
+
+.timeline { position:relative; margin:40px 0; }
+.timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#bfa86b; border-radius:4px; }
+.tl-item { position:relative; padding-left:60px; margin-bottom:25px; }
+.tl-item .date { font-weight:700; color:#7d5e2d; margin-bottom:6px; font-size:1rem; }
+.tl-item .desc { font-size:0.95rem; }
+
+.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.gallery img { width:100%; height:150px; object-fit:cover; border-radius:8px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s; }
+.gallery img:hover { transform:scale(1.05); }
+
+.accordion .q { cursor:pointer; padding:14px; border-radius:8px; background:#dcd1b2; margin-bottom:8px; font-weight:600; font-size:1rem; }
+.accordion .a { padding:14px; margin-bottom:10px; display:none; background:#f0e8d5; border-radius:8px; font-size:0.95rem; }
+
+.quiz .options { display:grid; gap:12px; margin-top:12px; }
+.option { padding:12px; background:#dcd1b2; border-radius:8px; cursor:pointer; transition:0.3s; }
+.option:hover { background:#c5b484; }
+.option.correct { background:rgba(34,197,94,0.2); border:1px solid #22c55e; }
+.option.wrong { background:rgba(239,68,68,0.2); border:1px solid #ef4444; }
+
+footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9rem; border-top:2px solid #d6cfc0; }
+
+.profile { display:flex; gap:20px; align-items:center; margin-top:20px; }
+.profile img { width:120px; border-radius:50%; border:2px solid #bfa86b; }
+.profile-info { font-size:0.95rem; max-width:700px; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Pemilu 1955</div>
+  <nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#pengantar">Pengantar</a>
+    <a href="#latar">Latar</a>
+    <a href="#tokoh">Tokoh</a>
+    <a href="#proses">Proses</a>
+    <a href="#hasil">Hasil</a>
+    <a href="#dampak">Dampak</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kuis">Kuis</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<div id="beranda" class="hero">
+  <h1>Pemilu 1955 — Tonggak Sejarah Demokrasi Indonesia</h1>
+  <p>Pelajari bagaimana rakyat Indonesia menentukan masa depan politiknya melalui Pemilu 1955 — dari kampanye, pemungutan suara, hingga hasil yang membentuk sejarah.</p>
+</div>
+
+<section id="pengantar">
+  <h2>Pengantar</h2>
+  <div class="content">
+    <p>Pemilu 1955 merupakan tonggak penting dalam sejarah demokrasi Indonesia. Sebagai pemilu pertama pasca-kemerdekaan, pemilu ini menandai awal sistem demokrasi parlementer di Indonesia dan menjadi dasar bagi penyelenggaraan pemilu berikutnya.</p>
+  </div>
+</section>
+
+<section id="latar">
+  <h2>Latar Belakang</h2>
+  <div class="content">
+    <p>Setelah kemerdekaan 1945, Indonesia menghadapi tantangan besar membangun pemerintahan demokratis. Sistem demokrasi liberal awal menimbulkan ketidakstabilan politik, seringnya pergantian kabinet, dan konflik partai. Pemilu 1955 diselenggarakan untuk menghasilkan legislatif yang stabil dan representatif. Diatur oleh UU No.7 Tahun 1953, persiapan dilakukan di masa PM Ali Sastroamidjojo, sedangkan saat pemungutan suara, PM Burhanuddin Harahap menjabat. Pemilu berlangsung tertib dan damai meski ada tantangan keamanan di beberapa daerah.</p>
+  </div>
+</section>
+
+<section id="tokoh">
+  <h2>Tokoh & Partai</h2>
+  <div class="content">
+    <ul>
+      <li><strong>PNI:</strong> Dipimpin Ir. Sukarno, menjadi pemenang.</li>
+      <li><strong>Masyumi:</strong> Partai Islam berpengaruh.</li>
+      <li><strong>NU:</strong> Organisasi Islam terbesar, ikut serta.</li>
+      <li><strong>PKI:</strong> Partai komunis dengan dukungan signifikan.</li>
+      <li>Partai lain: PSI, Parkindo, Partai Katolik, dll.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="proses">
+  <h2>Proses Pelaksanaan</h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="date">29 September 1955</div><div class="desc">Pemilu DPR untuk memilih anggota Dewan Perwakilan Rakyat.</div></div>
+    <div class="tl-item"><div class="date">15 Desember 1955</div><div class="desc">Pemilu Konstituante untuk memilih anggota yang menyusun UUD baru.</div></div>
+  </div>
+</section>
+
+<section id="hasil">
+  <h2>Hasil Pemilu</h2>
+  <div class="content">
+    <p>Hasil mencerminkan pluralitas politik Indonesia. PNI memperoleh suara terbanyak, diikuti Masyumi, NU, dan PKI. Data ini menjadi dasar pembentukan Konstituante untuk menyusun UUD baru.</p>
+  </div>
+</section>
+
+<section id="dampak">
+  <h2>Dampak</h2>
+  <div class="content">
+    <ul>
+      <li>Pembentukan Konstituante sebagai dasar penyusunan UUD baru.</li>
+      <li>Peningkatan partisipasi politik masyarakat.</li>
+      <li>Penguatan sistem demokrasi dan contoh pemilu adil bagi masa depan.</li>
+      <li>Muncul tantangan politik dan sosial di beberapa daerah.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="galeri">
+  <h2>Galeri Arsip</h2>
+  <div class="gallery">
+    <img src="https://kota-tangerang.kpu.go.id/public/kota-tangerang/koleksigambar/1635743735pemilu%201955.jpg" alt="Kampanye Pemilu 1955">
+    <img src="https://asset.kompas.com/crops/4ecJcWnAasrPn8OHHwyTtU0Yaf0=/0x0:750x500/1200x800/data/photo/2022/01/15/61e2bde5c01d9.png" alt="Pemungutan Suara 1955">
+    <img src="https://kab-banjarnegara.kpu.go.id/public/kab-banjarnegara/koleksigambar/1741490780_0463db5ad7ef5246056f.jpg" alt="Partai Politik 1955">
+    <img src="https://cdn1-production-images-kly.akamaized.net/kGepUaGH8Mw4JFJ7Gt7ZhqUJgHk=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4717549/original/089217700_1705394052-Pemilu_1955_-_Bawaslu.jpeg" alt="Konstituante 1955">
+  </div>
+</section>
+
+<section id="kuis">
+  <h2>Kuis Interaktif</h2>
+  <div class="content quiz">
+    <div id="quizInner">
+      <div id="qnum"></div>
+      <div id="qtext"></div>
+      <div class="options" id="opts"></div>
+      <div style="display:flex; gap:10px; margin-top:14px; justify-content:flex-end; align-items:center;">
+        <div id="feedback" style="flex:1;"></div>
+        <button id="nextQ" class="cta">Jawab & Lanjut</button>
+      </div>
+      <div style="margin-top:12px;">Skor: <span id="score">0</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <h2>Tentang Pembuat</h2>
+  <div class="content">
+    <div class="profile">
+      <img src="https://res.cloudinary.com/dceylrkji/image/upload/v1761064428/WhatsApp_Image_2025-10-21_at_23.32.51_zulhvj.jpg " alt="Profil Pembuat">
+      <div class="profile-info">
+        <p><strong>Adistira Rizqi Ramadani.</strong> — Siswa SMK Negeri 69 Jakarta, Jurusan Sistem Informasi Jaringan Dan Aplikasi.</p>
+
+        <p>"Pemilu adalah peluang untuk mengubah masa depan, mari kita lakukan dengan damai dan penuh kebijaksanaan."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="content accordion">
+    <div class="q">Apakah Pemilu 1955 sukses?</div>
+    <div class="a">Secara teknis berhasil, tetapi hasil politik menimbulkan tantangan yang berlanjut hingga dekade berikutnya.</div>
+    <div class="q">Apa itu Konstituante?</div>
+    <div class="a">Badan yang dipilih untuk merumuskan konstitusi baru, terdiri dari wakil partai politik terpilih.</div>
+    <div class="q">Bagaimana masyarakat ikut serta?</div>
+    <div class="a">Masyarakat menggunakan hak pilihnya di TPS yang tersedia, dengan partisipasi tinggi di seluruh wilayah Indonesia.</div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Edukasi Sejarah Pemilu 1955 — Adistira Rizqi Ramadani
+</footer>
+
+<script>
+// Accordion
+document.querySelectorAll('.accordion .q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const a=q.nextElementSibling;
+    const open=a.style.display==='block';
+    document.querySelectorAll('.accordion .a').forEach(x=>x.style.display='none');
+    if(!open) a.style.display='block';
+  });
+});
+
+// Quiz Logic
+const quiz=[
+  {q:'Kapan Pemilu DPR 1955 dilaksanakan?', opts:['17 Agustus 1955','29 September 1955','1 Oktober 1955','25 Desember 1955'], ans:1},
+  {q:'Siapa partai pemenang Pemilu 1955?', opts:['PNI','Masyumi','NU','PKI'], ans:0},
+  {q:'Pemilu Konstituante dilaksanakan pada?', opts:['29 September','15 Desember','1 Januari','17 Agustus'], ans:1},
+  {q:'Partai Islam terbesar saat Pemilu 1955?', opts:['Masyumi','NU','PSI','PKI'], ans:1},
+  {q:'Berapa jumlah partai peserta Pemilu 1955?', opts:['50','100','170','200'], ans:2},
+  {q:'Apa tujuan Pemilu 1955?', opts:['Mengambil presiden','Menyusun UUD baru','Membuat kabinet','Memilih gubernur'], ans:1},
+  {q:'Siapa tokoh PNI saat itu?', opts:['Ir. Sukarno','Mohammad Hatta','Sutan Sjahrir','Tan Malaka'], ans:0},
+  {q:'Dampak Pemilu 1955?', opts:['Tidak ada','Penguatan demokrasi','Perang sipil','Krisis ekonomi'], ans:1},
+  {q:'Konstituante dibubarkan pada tahun?', opts:['1957','1958','1959','1960'], ans:2},
+  {q:'Pemilu 1955 merupakan pemilu keberapa di Indonesia?', opts:['Pertama','Kedua','Ketiga','Keempat'], ans:0}
+];
+
+let current=0,score=0;
+const qnum=document.getElementById('qnum'), qtext=document.getElementById('qtext'), opts=document.getElementById('opts'), feedback=document.getElementById('feedback'), nextQ=document.getElementById('nextQ');
+
+function loadQ(){
+  if(current>=quiz.length){qnum.textContent='Kuis Selesai'; qtext.textContent='Skor Anda: '+score+'/'+quiz.length; opts.innerHTML=''; feedback.innerHTML=''; nextQ.style.display='none'; return;}
+  qnum.textContent='Soal '+(current+1)+' / '+quiz.length;
+  qtext.textContent=quiz[current].q;
+  opts.innerHTML='';
+  feedback.innerHTML='';
+  quiz[current].opts.forEach((o,i)=>{
+    const b=document.createElement('div'); b.textContent=o; b.className='option';
+    b.onclick=()=>{if(b.classList.contains('selected')) return; b.classList.add('selected'); if(i===quiz[current].ans){b.classList.add('correct'); feedback.textContent='Benar!'; score++;}else{b.classList.add('wrong'); feedback.textContent='Salah!';} document.getElementById('score').textContent=score;}
+    opts.appendChild(b);
+  });
+}
+nextQ.onclick=()=>{current++; loadQ();}
+loadQ();
+</script>
+
+</body>
+</html>
