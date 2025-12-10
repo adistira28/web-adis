@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Quiz PKK Cyberpunk</title>
+<style>
+body{
+    background:#0a0f1f;
+    font-family:Arial, sans-serif;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+#gameBox{
+    max-width:800px;
+    margin:auto;
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 0 20px #0ff;
+}
+button{
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#131b3f;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+}
+button:hover{
+    background:#00eaff;
+    color:black;
+    transform:scale(1.02);
+}
+#nextBtn{
+    margin-top:20px;
+    background:#02ff7a;
+    color:black;
+}
+#progress{
+    width:100%;
+    height:15px;
+    background:#222;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+#bar{
+    height:100%;
+    width:0%;
+    background:#0ff;
+    border-radius:10px;
+    transition:0.3s;
+}
+.quizImage{
+    width:250px;
+    margin:15px auto;
+    border-radius:10px;
+    display:block;
+}
+</style>
+</head>
+
+<body>
+<div id="gameBox">
+    <h1>Quiz PKK – Cyberpunk Edition</h1>
+    <div id="progress"><div id="bar"></div></div>
+
+    <div id="imageBox"></div>
+    <h2 id="questionText"></h2>
+    <div id="choices"></div>
+
+    <button id="nextBtn" onclick="nextQuestion()" style="display:none;">Berikutnya ▶</button>
+    <h2 id="scoreBox"></h2>
+</div>
+
+<script>
+let wrong = 0;
+let score = 0;
+let i = 0;
+
+let imgFragile = "BASE64_FRAGILE_HERE";
+let imgIntel   = "BASE64_INTEL_HERE";
+
+let questions = [
+{q:"Undang-undang NO. 30 tahun 2000 membahas tentang …", img:"", a:"Rahasia dagang",
+o:["Rahasia dagang","Merek","Hak Paten","Paten","Kepabean"]},
+
+{q:"Inti dari strategi pemasaran adalah …", img:"", a:"Marketing mix",
+o:["Bauran produksi","Marketing mix","Segementting","Targeting","Positioning"]},
+
+{q:"Langkah pengembangan produk baru adalah …", img:"", 
+a:"Pencarian gagasan, seleksi produk, desain produk pendahuluan, pengujian, desain akhir",
+o:["Pencarian gagasan, seleksi produk, produksi massal, desain produk pendahuluan, pengujian",
+"Seleksi produk, promosi, produksi massal, desain produk pendahuluan, pencarian gagasan",
+"Pencarian gagasan, seleksi produk, desain produk pendahuluan, pengujian, desain akhir",
+"Desain akhir, desain produk pendahuluan, promosi, produksi massal, produksi bertahap",
+"Produksi bertahap, promosi, produksi massal, desain produk pendahuluan, pencarian gagasan"]},
+
+{q:"Contoh inovasi penjualan langsung …", img:"",
+a:"Penjualan secara online, melalui pemesanan lewat telepon dan melalui TV",
+o:["Penjualan secara online, melalui pemesanan lewat telepon dan melalui TV",
+"Penjualan secara online, melalui distributor dan agen",
+"Penjualan melalui TV, para sales, dan distributor",
+"Penjualan melalui distributor besar dan kecil",
+"Penjualan melalui surat kabar, tabloid dan lain-lain"]},
+
+{q:"Iklan teks link otomatis disebut …", img:"", a:"Iklan kontekstual",
+o:["Iklan daftar local","Iklan konten","Iklan direktori online","Iklan kontekstual","Iklan link"]},
+
+{q:"Kesempatan membuka usaha disebut …", img:"", a:"Peluang usaha",
+o:["Peluang untung","Peluang usaha","Kesempatan usaha","Kesempatan bisnis","Keuntungan bisnis"]},
+
+{q:"Proposal usaha harus bersifat …", img:"", a:"Asli dan realistis",
+o:["Asli","Realistis","Duplikatif","Aplikatif","Asli dan realistis"]},
+
+{q:"Pendahuluan proposal berisi …", img:"", a:"Latar belakang",
+o:["Penjadwalan kegiatan","Informasi usaha","Kriteria pelanggan","Biodata perusahaan","Latar belakang"]},
+
+{q:"Biaya alat bantu produksi disebut biaya …", img:"", a:"Produksi",
+o:["Pengembangan","Tenaga kerja","Variabel","Produksi","Bahan mentah"]},
+
+{q:"Dodol lembek & berjamur salah proses …", img:"", a:"Pemasakan adonan",
+o:["Penimbangan baban","Pencampuran bahan","Pemasakan adonan","Pengangkatan adonan","Pengemasan produk"]},
+
+{q:"Simbol perlindungan karya adalah …", img:"", a:"Copyright",
+o:["Trade mark","Servis mark","Registered mark","Registered","Copyright"]},
+
+{q:"Produksi terus-menerus dimulai dari …", img:"", a:"Bahan mentah sampai proses produksi akhir",
+o:["Bahan mentah sampai proses produksi akhir","Bahan mentah sampai proses produksi awal",
+"Bahan alam sampai proses produksi akhir","Bahan jadi sampai produksi akhir","Bahan baku sampai produksi awal"]},
+
+{q:"Penjadwalan waktu produk digunakan adalah …", img:"", a:"Intime",
+o:["Backstreet","Backward","Forward","Akward","Intime"]},
+
+{q:"Promosi terbaik siswa jual makanan …", img:"", a:"Penjualan online",
+o:["Penjualan langsung","Penjualan online","Penjualan door to door","Penjualan pesanan","Penjualan face to face"]},
+
+{q:"Prototipe perkiraan produk akhir adalah …", img:"", a:"Technical testing",
+o:["Technical testing","Pengujian preferensi","Pengujian kepuasan","Pengujian pasar","Test markets"]},
+
+{q:"Yang bukan pamphlet …", img:"", a:"Kartu nama",
+o:["Booklet","Katalog","Kartu nama","Flyer","Poster"]},
+
+{q:"Penjadwalan mulai & akhir produksi adalah …", img:"", a:"Proses produksi",
+o:["Tenaga kerja","Bahan baku","Kualitas","Proses produksi","Biaya produksi"]},
+
+{q:"Menyediakan produk sesuai standar adalah peran …", img:"", a:"Produsen",
+o:["Pemerintah","Perusahaan","Distributor","Pemasar","Produsen"]},
+
+{q:"Menetapkan urutan operasi adalah …", img:"", a:"Rute produksi",
+o:["Perencanaan produk","Pengujian","Rute produksi","Proses rencana","Perencanaan produksi"]},
+
+{q:"Produksi massal efektif karena …", img:"", a:"Biaya rendah dan produksi banyak",
+o:["Biaya rendah dan produksi banyak","Biaya sedang dan produksi sedang",
+"Biaya tinggi dan produksi tinggi","Biaya sedang dan produksi tinggi","Biaya rendah dan produksi rendah"]},
+
+{q:"Fungsi kemasan gambar adalah …", img:"fragile", a:"Barrier Protection",
+o:["Physical production","Barrier Protection","Reducig theft","Convenience","Marketing"]},
+
+{q:"Promosi cepat meningkatkan pelanggan …", img:"", a:"Promosi penjualan",
+o:["Iklan","Publisitas","Penjualan prbadi","Pemasaran langsung","Promosi penjualan"]},
+
+{q:"Segmentasi usia/gender/ekonomi adalah …", img:"", a:"Segmentasi pasar demografi",
+o:["Geografi","Psikografi","Demografi","Sociocultural","Hybrid"]},
+
+{q:"Core i7 8th gen menunjukkan …", img:"intel", a:"Versi prosesor dan teknologi",
+o:["Versi prosesor dan teknologi","Logo perusahaan","Kecepatan CPU","Jenis prosesor","Jumlah core"]},
+
+{q:"Proposal usaha mencakup …", img:"", a:"Rencana dan fungsi",
+o:["Fungsi dan rencana","Strategi dan fungsi","Strategi dan sasaran","Sasaran dan fungsi","Rencana dan fungsi"]},
+
+{q:"Yang bukan aspek multi-produk adalah …", img:"", a:"Cara",
+o:["Jenis produk","Cara","Tempat","Kombinasi produk","Pemasaran"]},
+
+{q:"Prototipe tester adalah …", img:"", a:"Basic model",
+o:["Basic model","New prototype","Prototype By Order","Prototype By Research","Sutainable prototipe"]},
+
+{q:"Menggabungkan bagian menjadi produk jadi adalah …", img:"", a:"Perakitan",
+o:["Pemasaran","Produksi","Pengujian","Perencanaan","Perakitan"]},
+
+{q:"Buka coffee shop harus lihat …", img:"", a:"Strategi bersaing",
+o:["Strategi bersaing","Segmen pasar","Perkembangan teknologi","Perencanaan platform produk","Evaluasi peluang produk baru"]},
+
+{q:"Yang bukan bentuk promosi adalah …", img:"", a:"Story telling",
+o:["Story telling","Advertensi","Personal selling","Sales promotion","Publicity"]},
+
+{q:"Yakin kualitas produk dengan …", img:"", a:"Standardisasi",
+o:["Standardisasi","Dasar ilmiah","Dasar nonnilmiah","Spesifikasi produk","Dasar pengujian produk"]},
+
+{q:"Logo harus …", img:"", a:"Harus mudah diingat",
+o:["Harus mudah diingat","Harus berwarna","Bersifat konfleks","Dibuat dengan kalimat padat","Dibuat secara sederhana"]},
+
+{q:"Pengujian taksiran penjualan adalah …", img:"", a:"Pasar simulasi",
+o:["Preperensi dan kepuasaan","Pasar simulasi","Pelayanan","Teknis","Pasar"]},
+
+{q:"Tahapan wawancara konsumen adalah …", img:"", a:"Tahap survey",
+o:["Tahap awal","Tahap monitoring","Tahap survey","Tahap analisis","Tahap pembentukan"]},
+
+{q:"Pemasaran internet menghasilkan …", img:"", a:"Adsense/advertising",
+o:["Rating","Adsense/advertising","Tidak memikirkan profit","Keuntungan sosial","Jumlah download"]},
+
+{q:"Hasil produksi fisik & kimia …", img:"", a:"Barang",
+o:["Jasa","Produksi","Perencanaan produk","Barang","Pangan"]},
+
+{q:"Menciptakan kendaraan non-BBM sumber usaha dari …", img:"", a:"Fenomena sekitar",
+o:["Pengalaman","Wawasan","Keahlian","Fenomena sekitar","Permintaan pasar"]},
+
+{q:"Media interaktif = pemasaran …", img:"", a:"Online",
+o:["Langsung","Tidak langsung","Face to face","Offline","Online"]},
+
+{q:"APD pembuatan permen …", img:"", a:"1, 2, 3, 7",
+o:["1, 2, 4, 7","1, 2, 3, 7","1, 2, 5, 7","1, 3, 6, 7","2, 4, 5, 7"]},
+
+{q:"Menentukan jalur produk adalah …", img:"", a:"Routing",
+o:["Evaluating","Routing","Scheduling","Dispatching","Follow Up"]}
+];
+
+// =========================
+// FUNGSI MENAMPILKAN SOAL
+// =========================
+function loadQuestion(){
+    if(i >= questions.length){
+        document.getElementById("scoreBox").innerHTML = 
+            "🎉 Selesai! Nilai kamu: " + score + "/" + questions.length;
+        document.getElementById("questionText").style.display = "none";
+        document.getElementById("choices").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("imageBox").innerHTML = "";
+        return;
+    }
+
+    let q = questions[i];
+
+    // Progress bar
+    let percent = Math.floor((i / questions.length) * 100);
+    document.getElementById("bar").style.width = percent + "%";
+
+    // Tampilkan soal
+    document.getElementById("questionText").innerHTML = (i+1) + ". " + q.q;
+
+    // Tampilkan gambar jika ada
+    if(q.img === "fragile"){
+        document.getElementById("imageBox").innerHTML =
+            `<img class="quizImage" src="${imgFragile}">`;
+    } else if(q.img === "intel"){
+        document.getElementById("imageBox").innerHTML =
+            `<img class="quizImage" src="${imgIntel}">`;
+    } else {
+        document.getElementById("imageBox").innerHTML = "";
+    }
+
+    // Tampilkan pilihan jawaban
+    let c = "";
+    q.o.forEach(v=>{
+        c += `<button onclick="checkAnswer('${v}')">${v}</button>`;
+    });
+    document.getElementById("choices").innerHTML = c;
+    document.getElementById("nextBtn").style.display = "none";
+}
+
+// =========================
+// CEK JAWABAN
+// =========================
+function checkAnswer(x){
+    let q = questions[i];
+
+    if(x === q.a){
+        score++;
+    } else {
+        wrong++;
+    }
+
+    // Jika salah 5 → game over
+    if(wrong >= 5){
+        document.getElementById("scoreBox").innerHTML =
+            "☠️ GAME OVER<br>Kamu salah 5 kali.";
+        document.getElementById("questionText").style.display = "none";
+        document.getElementById("choices").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("imageBox").innerHTML = "";
+        return;
+    }
+
+    document.getElementById("nextBtn").style.display = "block";
+}
+
+// =========================
+// NEXT QUESTION
+// =========================
+function nextQuestion(){
+    i++;
+    loadQuestion();
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
+
