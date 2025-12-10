@@ -3,7 +3,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Quiz PKK Cyberpunk</title>
+<title>Quiz PKK Adistira</title>
 <style>
 body{
     background:#0a0f1f;
