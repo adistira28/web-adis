@@ -2,298 +2,303 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pemilu 1955 — Portal Edukasi Klasik</title>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+<title>Quiz PKK Adistira</title>
 <style>
-/* ===== Umum ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Merriweather', serif; background:#f5f0e1; color:#2e2a24; line-height:1.8; }
-a { text-decoration:none; color:inherit; }
-html { scroll-behavior: smooth; }
-
-/* ===== Header ===== */
-header {
-  position:fixed; top:0; left:0; right:0;
-  background:rgba(245,240,225,0.95); backdrop-filter:blur(6px);
-  display:flex; justify-content:space-between; align-items:center;
-  padding:10px 20px; border-bottom:4px solid #ff0000; z-index:999;
+body{
+    background:#0a0f1f;
+    font-family:Arial, sans-serif;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
-
-header .logo { font-weight:700; font-size:1.5rem; color:#ff0000; }
-
-nav { display:flex; flex-wrap:wrap; align-items:center; }
-nav a { margin:0 8px; padding:6px 12px; border-radius:6px; transition:0.3s; }
-nav a:hover { background:#d6cfc0; }
-
-/* Hamburger button */
-.hamburger { display:none; font-size:1.8rem; cursor:pointer; }
-
-/* ===== Hero ===== */
-.hero {
-  margin-top:70px; padding:80px 20px;
-  background: linear-gradient(180deg, #ff0000 0%, #f5f0e1 100%);
-  text-align:center; color:#2e2a24;
+#gameBox{
+    max-width:800px;
+    margin:auto;
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 0 20px #0ff;
 }
-.hero h1 { font-size:3rem; margin-bottom:20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
-.hero p { max-width:800px; margin:0 auto 30px; font-size:1.1rem; }
-
-/* ===== Section ===== */
-section { padding:80px 20px; max-width:900px; margin:0 auto; }
-section h2 { font-size:2.2rem; margin-bottom:20px; border-left:6px solid #bfa86b; padding-left:12px; }
-section .content { background:#f0e8d5; padding:25px; border-radius:12px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); margin-bottom:25px; font-size:1rem; }
-
-/* ===== Timeline ===== */
-.timeline { position:relative; margin:40px 0; }
-.timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:4px; background:#bfa86b; border-radius:4px; }
-.tl-item { position:relative; padding-left:60px; margin-bottom:25px; }
-.tl-item .date { font-weight:700; color:#7d5e2d; margin-bottom:6px; font-size:1rem; }
-.tl-item .desc { font-size:0.95rem; }
-
-/* ===== Gallery ===== */
-.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
-.gallery img { width:100%; height:150px; object-fit:cover; border-radius:8px; box-shadow:2px 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s; }
-.gallery img:hover { transform:scale(1.05); }
-
-/* ===== Accordion ===== */
-.accordion .q { cursor:pointer; padding:14px; border-radius:8px; background:#dcd1b2; margin-bottom:8px; font-weight:600; font-size:1rem; }
-.accordion .a { padding:14px; margin-bottom:10px; display:none; background:#f0e8d5; border-radius:8px; font-size:0.95rem; }
-
-/* ===== Quiz ===== */
-.quiz .options { display:grid; gap:12px; margin-top:12px; }
-.option { padding:12px; background:#dcd1b2; border-radius:8px; cursor:pointer; transition:0.3s; }
-.option:hover { background:#c5b484; }
-.option.correct { background:rgba(34,197,94,0.2); border:1px solid #22c55e; }
-.option.wrong { background:rgba(239,68,68,0.2); border:1px solid #ef4444; }
-
-/* ===== Footer ===== */
-footer { text-align:center; padding:40px 20px; background:#e3dac9; font-size:0.9rem; border-top:2px solid #d6cfc0; }
-
-/* ===== Profil ===== */
-.profile { display:flex; gap:20px; align-items:center; margin-top:20px; }
-.profile img { width:120px; border-radius:50%; border:2px solid #bfa86b; }
-.profile-info { font-size:0.95rem; max-width:700px; }
-
-/* ===== Responsif ===== */
-@media (max-width: 768px) {
-  /* Hamburger */
-  .hamburger { display:block; }
-  nav { display:none; width:100%; flex-direction:column; margin-top:10px; }
-  nav.show { display:flex; }
-  nav a { margin:6px 0; }
-  /* Hero */
-  .hero { padding: 60px 15px; }
-  .hero h1 { font-size: 2rem; }
-  .hero p { font-size: 1rem; }
-  /* Section */
-  section { padding: 50px 15px; }
-  section h2 { font-size: 1.8rem; }
-  /* Timeline */
-  .timeline { padding-left: 10px; }
-  .timeline::before { left:10px; width:3px; }
-  .tl-item { padding-left:40px; }
-  /* Gallery */
-  .gallery img { height: 120px; }
-  /* Accordion */
-  .accordion .q, .accordion .a { font-size: 0.95rem; }
-  /* Profil */
-  .profile { flex-direction: column; text-align: center; }
-  .profile img { width:100px; }
-  .profile-info { max-width:100%; }
-  /* Quiz */
-  #kuis .options { gap:8px; }
-  .option { font-size:0.9rem; padding:10px; }
+button{
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#131b3f;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+}
+button:hover{
+    background:#00eaff;
+    color:black;
+    transform:scale(1.02);
+}
+#nextBtn{
+    margin-top:20px;
+    background:#02ff7a;
+    color:black;
+}
+#progress{
+    width:100%;
+    height:15px;
+    background:#222;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+#bar{
+    height:100%;
+    width:0%;
+    background:#0ff;
+    border-radius:10px;
+    transition:0.3s;
+}
+.quizImage{
+    width:250px;
+    margin:15px auto;
+    border-radius:10px;
+    display:block;
 }
 </style>
 </head>
+
 <body>
+<div id="gameBox">
+    <h1>Quiz PKK – Adistira</h1>
+    <div id="progress"><div id="bar"></div></div>
 
-<header>
-  <div class="logo">Pemilu 1955</div>
-  <div class="hamburger" id="hamburger">&#9776;</div>
-  <nav id="navMenu">
-    <a href="#beranda">Beranda</a>
-    <a href="#pengantar">Pengantar</a>
-    <a href="#latar">Latar</a>
-    <a href="#tokoh">Tokoh</a>
-    <a href="#proses">Proses</a>
-    <a href="#hasil">Hasil</a>
-    <a href="#dampak">Dampak</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#kuis">Kuis</a>
-    <a href="#tentang">Tentang</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-</header>
+    <div id="imageBox"></div>
+    <h2 id="questionText"></h2>
+    <div id="choices"></div>
 
-<div id="beranda" class="hero">
-  <h1>Pemilu 1955 — Tonggak Sejarah Demokrasi Indonesia</h1>
-  <p>Pelajari bagaimana rakyat Indonesia menentukan masa depan politiknya melalui Pemilu 1955 — dari kampanye, pemungutan suara, hingga hasil yang membentuk sejarah.</p>
+    <button id="nextBtn" onclick="nextQuestion()" style="display:none;">Berikutnya ▶</button>
+    <h2 id="scoreBox"></h2>
 </div>
 
-<section id="pengantar">
-  <h2>Pengantar</h2>
-  <div class="content">
-    <p>Pemilu 1955 merupakan tonggak penting dalam sejarah demokrasi Indonesia. Sebagai pemilu pertama pasca-kemerdekaan, pemilu ini menandai awal sistem demokrasi parlementer di Indonesia dan menjadi dasar bagi penyelenggaraan pemilu berikutnya.</p>
-  </div>
-</section>
-
-<section id="latar">
-  <h2>Latar Belakang</h2>
-  <div class="content">
-    <p>Setelah kemerdekaan 1945, Indonesia menghadapi tantangan besar membangun pemerintahan demokratis. Sistem demokrasi liberal awal menimbulkan ketidakstabilan politik, seringnya pergantian kabinet, dan konflik partai. Pemilu 1955 diselenggarakan untuk menghasilkan legislatif yang stabil dan representatif. Diatur oleh UU No.7 Tahun 1953, persiapan dilakukan di masa PM Ali Sastroamidjojo, sedangkan saat pemungutan suara, PM Burhanuddin Harahap menjabat. Pemilu berlangsung tertib dan damai meski ada tantangan keamanan di beberapa daerah.</p>
-  </div>
-</section>
-
-<section id="tokoh">
-  <h2>Tokoh & Partai</h2>
-  <div class="content">
-    <ul>
-      <li><strong>PNI:</strong> Dipimpin Ir. Sukarno, menjadi pemenang.</li>
-      <li><strong>Masyumi:</strong> Partai Islam berpengaruh.</li>
-      <li><strong>NU:</strong> Organisasi Islam terbesar, ikut serta.</li>
-      <li><strong>PKI:</strong> Partai komunis dengan dukungan signifikan.</li>
-      <li>Partai lain: PSI, Parkindo, Partai Katolik, dll.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="proses">
-  <h2>Proses Pelaksanaan</h2>
-  <div class="timeline">
-    <div class="tl-item"><div class="date">29 September 1955</div><div class="desc">Pemilu DPR untuk memilih anggota Dewan Perwakilan Rakyat.</div></div>
-    <div class="tl-item"><div class="date">15 Desember 1955</div><div class="desc">Pemilu Konstituante untuk memilih anggota yang menyusun UUD baru.</div></div>
-  </div>
-</section>
-
-<section id="hasil">
-  <h2>Hasil Pemilu</h2>
-  <div class="content">
-    <p>Hasil mencerminkan pluralitas politik Indonesia. PNI memperoleh suara terbanyak, diikuti Masyumi, NU, dan PKI. Data ini menjadi dasar pembentukan Konstituante untuk menyusun UUD baru.</p>
-  </div>
-</section>
-
-<section id="dampak">
-  <h2>Dampak</h2>
-  <div class="content">
-    <ul>
-      <li>Pembentukan Konstituante sebagai dasar penyusunan UUD baru.</li>
-      <li>Peningkatan partisipasi politik masyarakat.</li>
-      <li>Penguatan sistem demokrasi dan contoh pemilu adil bagi masa depan.</li>
-      <li>Muncul tantangan politik dan sosial di beberapa daerah.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="galeri">
-  <h2>Galeri Arsip</h2>
-  <div class="gallery">
-    <img src="https://kota-tangerang.kpu.go.id/public/kota-tangerang/koleksigambar/1635743735pemilu%201955.jpg" alt="Kampanye Pemilu 1955">
-    <img src="https://asset.kompas.com/crops/4ecJcWnAasrPn8OHHwyTtU0Yaf0=/0x0:750x500/1200x800/data/photo/2022/01/15/61e2bde5c01d9.png" alt="Pemungutan Suara 1955">
-    <img src="https://kab-banjarnegara.kpu.go.id/public/kab-banjarnegara/koleksigambar/1741490780_0463db5ad7ef5246056f.jpg" alt="Partai Politik 1955">
-    <img src="https://mmc.tirto.id/image/otf/640x0/2017/04/20/LambangpartaiPesertaPemilu1955_Foto_HowardSochurek_LIFE_ratio-16x9.jpg" alt="Konstituante 1955">
-  </div>
-</section>
-
-<section id="kuis">
-  <h2>Kuis Interaktif</h2>
-  <div class="content quiz">
-    <div id="quizInner">
-      <div id="qnum"></div>
-      <div id="qtext"></div>
-      <div class="options" id="opts"></div>
-      <div style="display:flex; gap:10px; margin-top:14px; justify-content:flex-end; align-items:center;">
-        <div id="feedback" style="flex:1;"></div>
-        <button id="nextQ" class="cta">Jawab & Lanjut</button>
-      </div>
-      <div style="margin-top:12px;">Skor: <span id="score">0</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="tentang">
-  <h2>Tentang Pembuat</h2>
-  <div class="content">
-    <div class="profile">
-      <img src="https://res.cloudinary.com/dceylrkji/image/upload/v1761064428/WhatsApp_Image_2025-10-21_at_23.32.51_zulhvj.jpg" alt="Profil Pembuat">
-      <div class="profile-info">
-        <p><strong>Adistira Rizqi Ramadani.</strong> — Siswa SMK Negeri 69 Jakarta, Jurusan Sistem Informasi Jaringan Dan Aplikasi.</p>
-        <p>"Pemilu adalah peluang untuk mengubah masa depan, mari kita lakukan dengan damai dan penuh kebijaksanaan."</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <h2>FAQ</h2>
-  <div class="content accordion">
-    <div class="q">Apakah Pemilu 1955 sukses?</div>
-    <div class="a">Secara teknis berhasil, tetapi hasil politik menimbulkan tantangan yang berlanjut hingga dekade berikutnya.</div>
-    <div class="q">Apa itu Konstituante?</div>
-    <div class="a">Badan yang dipilih untuk merumuskan konstitusi baru, terdiri dari wakil partai politik terpilih.</div>
-    <div class="q">Bagaimana masyarakat ikut serta?</div>
-    <div class="a">Masyarakat menggunakan hak pilihnya di TPS yang tersedia, dengan partisipasi tinggi di seluruh wilayah Indonesia.</div>
-  </div>
-</section>
-
-<footer>
-  © 2025 Edukasi Sejarah Pemilu 1955 — Adistira Rizqi Ramadani
-</footer>
-
 <script>
-// Navbar hamburger
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-hamburger.addEventListener('click', ()=>{ navMenu.classList.toggle('show'); });
+let wrong = 0;
+let score = 0;
+let i = 0;
 
-// Accordion
-document.querySelectorAll('.accordion .q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const a=q.nextElementSibling;
-    const open=a.style.display==='block';
-    document.querySelectorAll('.accordion .a').forEach(x=>x.style.display='none');
-    if(!open) a.style.display='block';
-  });
-});
+let imgFragile = "BASE64_FRAGILE_HERE";
+let imgIntel   = "BASE64_INTEL_HERE";
 
-// Quiz Logic
-const quiz=[
-  {q:'Kapan Pemilu DPR 1955 dilaksanakan?', opts:['17 Agustus 1955','29 September 1955','1 Oktober 1955','25 Desember 1955'], ans:1},
-  {q:'Siapa partai pemenang Pemilu 1955?', opts:['PNI','Masyumi','NU','PKI'], ans:0},
-  {q:'Pemilu Konstituante dilaksanakan pada?', opts:['29 September','15 Desember','1 Januari','17 Agustus'], ans:1},
-  {q:'Partai Islam terbesar saat Pemilu 1955?', opts:['Masyumi','NU','PSI','PKI'], ans:1},
-  {q:'Berapa jumlah partai peserta Pemilu 1955?', opts:['50','100','170','200'], ans:2},
-  {q:'Apa tujuan Pemilu 1955?', opts:['Mengambil presiden','Menyusun UUD baru','Membuat kabinet','Memilih gubernur'], ans:1},
-  {q:'Siapa tokoh PNI saat itu?', opts:['Ir. Sukarno','Mohammad Hatta','Sutan Sjahrir','Tan Malaka'], ans:0},
-  {q:'Dampak Pemilu 1955?', opts:['Tidak ada','Penguatan demokrasi','Perang sipil','Krisis ekonomi'], ans:1},
-  {q:'Konstituante dibubarkan pada tahun?', opts:['1957','1958','1959','1960'], ans:2},
-  {q:'Pemilu 1955 merupakan pemilu keberapa di Indonesia?', opts:['Pertama','Kedua','Ketiga','Keempat'], ans:0}
+let questions = [
+{q:"Undang-undang NO. 30 tahun 2000 membahas tentang …", img:"", a:"Rahasia dagang",
+o:["Rahasia dagang","Merek","Hak Paten","Paten","Kepabean"]},
+
+{q:"Inti dari strategi pemasaran adalah …", img:"", a:"Marketing mix",
+o:["Bauran produksi","Marketing mix","Segementting","Targeting","Positioning"]},
+
+{q:"Langkah pengembangan produk baru adalah …", img:"", 
+a:"Pencarian gagasan, seleksi produk, desain produk pendahuluan, pengujian, desain akhir",
+o:["Pencarian gagasan, seleksi produk, produksi massal, desain produk pendahuluan, pengujian",
+"Seleksi produk, promosi, produksi massal, desain produk pendahuluan, pencarian gagasan",
+"Pencarian gagasan, seleksi produk, desain produk pendahuluan, pengujian, desain akhir",
+"Desain akhir, desain produk pendahuluan, promosi, produksi massal, produksi bertahap",
+"Produksi bertahap, promosi, produksi massal, desain produk pendahuluan, pencarian gagasan"]},
+
+{q:"Contoh inovasi penjualan langsung …", img:"",
+a:"Penjualan secara online, melalui pemesanan lewat telepon dan melalui TV",
+o:["Penjualan secara online, melalui pemesanan lewat telepon dan melalui TV",
+"Penjualan secara online, melalui distributor dan agen",
+"Penjualan melalui TV, para sales, dan distributor",
+"Penjualan melalui distributor besar dan kecil",
+"Penjualan melalui surat kabar, tabloid dan lain-lain"]},
+
+{q:"Iklan teks link otomatis disebut …", img:"", a:"Iklan kontekstual",
+o:["Iklan daftar local","Iklan konten","Iklan direktori online","Iklan kontekstual","Iklan link"]},
+
+{q:"Kesempatan membuka usaha disebut …", img:"", a:"Peluang usaha",
+o:["Peluang untung","Peluang usaha","Kesempatan usaha","Kesempatan bisnis","Keuntungan bisnis"]},
+
+{q:"Proposal usaha harus bersifat …", img:"", a:"Asli dan realistis",
+o:["Asli","Realistis","Duplikatif","Aplikatif","Asli dan realistis"]},
+
+{q:"Pendahuluan proposal berisi …", img:"", a:"Latar belakang",
+o:["Penjadwalan kegiatan","Informasi usaha","Kriteria pelanggan","Biodata perusahaan","Latar belakang"]},
+
+{q:"Biaya alat bantu produksi disebut biaya …", img:"", a:"Produksi",
+o:["Pengembangan","Tenaga kerja","Variabel","Produksi","Bahan mentah"]},
+
+{q:"Dodol lembek & berjamur salah proses …", img:"", a:"Pemasakan adonan",
+o:["Penimbangan baban","Pencampuran bahan","Pemasakan adonan","Pengangkatan adonan","Pengemasan produk"]},
+
+{q:"Simbol perlindungan karya adalah …", img:"", a:"Copyright",
+o:["Trade mark","Servis mark","Registered mark","Registered","Copyright"]},
+
+{q:"Produksi terus-menerus dimulai dari …", img:"", a:"Bahan mentah sampai proses produksi akhir",
+o:["Bahan mentah sampai proses produksi akhir","Bahan mentah sampai proses produksi awal",
+"Bahan alam sampai proses produksi akhir","Bahan jadi sampai produksi akhir","Bahan baku sampai produksi awal"]},
+
+{q:"Penjadwalan waktu produk digunakan adalah …", img:"", a:"Intime",
+o:["Backstreet","Backward","Forward","Akward","Intime"]},
+
+{q:"Promosi terbaik siswa jual makanan …", img:"", a:"Penjualan online",
+o:["Penjualan langsung","Penjualan online","Penjualan door to door","Penjualan pesanan","Penjualan face to face"]},
+
+{q:"Prototipe perkiraan produk akhir adalah …", img:"", a:"Technical testing",
+o:["Technical testing","Pengujian preferensi","Pengujian kepuasan","Pengujian pasar","Test markets"]},
+
+{q:"Yang bukan pamphlet …", img:"", a:"Kartu nama",
+o:["Booklet","Katalog","Kartu nama","Flyer","Poster"]},
+
+{q:"Penjadwalan mulai & akhir produksi adalah …", img:"", a:"Proses produksi",
+o:["Tenaga kerja","Bahan baku","Kualitas","Proses produksi","Biaya produksi"]},
+
+{q:"Menyediakan produk sesuai standar adalah peran …", img:"", a:"Produsen",
+o:["Pemerintah","Perusahaan","Distributor","Pemasar","Produsen"]},
+
+{q:"Menetapkan urutan operasi adalah …", img:"", a:"Rute produksi",
+o:["Perencanaan produk","Pengujian","Rute produksi","Proses rencana","Perencanaan produksi"]},
+
+{q:"Produksi massal efektif karena …", img:"", a:"Biaya rendah dan produksi banyak",
+o:["Biaya rendah dan produksi banyak","Biaya sedang dan produksi sedang",
+"Biaya tinggi dan produksi tinggi","Biaya sedang dan produksi tinggi","Biaya rendah dan produksi rendah"]},
+
+{q:"Fungsi kemasan gambar adalah …", img:"fragile", a:"Barrier Protection",
+o:["Physical production","Barrier Protection","Reducig theft","Convenience","Marketing"]},
+
+{q:"Promosi cepat meningkatkan pelanggan …", img:"", a:"Promosi penjualan",
+o:["Iklan","Publisitas","Penjualan prbadi","Pemasaran langsung","Promosi penjualan"]},
+
+{q:"Segmentasi usia/gender/ekonomi adalah …", img:"", a:"Segmentasi pasar demografi",
+o:["Geografi","Psikografi","Demografi","Sociocultural","Hybrid"]},
+
+{q:"Core i7 8th gen menunjukkan …", img:"intel", a:"Versi prosesor dan teknologi",
+o:["Versi prosesor dan teknologi","Logo perusahaan","Kecepatan CPU","Jenis prosesor","Jumlah core"]},
+
+{q:"Proposal usaha mencakup …", img:"", a:"Rencana dan fungsi",
+o:["Fungsi dan rencana","Strategi dan fungsi","Strategi dan sasaran","Sasaran dan fungsi","Rencana dan fungsi"]},
+
+{q:"Yang bukan aspek multi-produk adalah …", img:"", a:"Cara",
+o:["Jenis produk","Cara","Tempat","Kombinasi produk","Pemasaran"]},
+
+{q:"Prototipe tester adalah …", img:"", a:"Basic model",
+o:["Basic model","New prototype","Prototype By Order","Prototype By Research","Sutainable prototipe"]},
+
+{q:"Menggabungkan bagian menjadi produk jadi adalah …", img:"", a:"Perakitan",
+o:["Pemasaran","Produksi","Pengujian","Perencanaan","Perakitan"]},
+
+{q:"Buka coffee shop harus lihat …", img:"", a:"Strategi bersaing",
+o:["Strategi bersaing","Segmen pasar","Perkembangan teknologi","Perencanaan platform produk","Evaluasi peluang produk baru"]},
+
+{q:"Yang bukan bentuk promosi adalah …", img:"", a:"Story telling",
+o:["Story telling","Advertensi","Personal selling","Sales promotion","Publicity"]},
+
+{q:"Yakin kualitas produk dengan …", img:"", a:"Standardisasi",
+o:["Standardisasi","Dasar ilmiah","Dasar nonnilmiah","Spesifikasi produk","Dasar pengujian produk"]},
+
+{q:"Logo harus …", img:"", a:"Harus mudah diingat",
+o:["Harus mudah diingat","Harus berwarna","Bersifat konfleks","Dibuat dengan kalimat padat","Dibuat secara sederhana"]},
+
+{q:"Pengujian taksiran penjualan adalah …", img:"", a:"Pasar simulasi",
+o:["Preperensi dan kepuasaan","Pasar simulasi","Pelayanan","Teknis","Pasar"]},
+
+{q:"Tahapan wawancara konsumen adalah …", img:"", a:"Tahap survey",
+o:["Tahap awal","Tahap monitoring","Tahap survey","Tahap analisis","Tahap pembentukan"]},
+
+{q:"Pemasaran internet menghasilkan …", img:"", a:"Adsense/advertising",
+o:["Rating","Adsense/advertising","Tidak memikirkan profit","Keuntungan sosial","Jumlah download"]},
+
+{q:"Hasil produksi fisik & kimia …", img:"", a:"Barang",
+o:["Jasa","Produksi","Perencanaan produk","Barang","Pangan"]},
+
+{q:"Menciptakan kendaraan non-BBM sumber usaha dari …", img:"", a:"Fenomena sekitar",
+o:["Pengalaman","Wawasan","Keahlian","Fenomena sekitar","Permintaan pasar"]},
+
+{q:"Media interaktif = pemasaran …", img:"", a:"Online",
+o:["Langsung","Tidak langsung","Face to face","Offline","Online"]},
+
+{q:"APD pembuatan permen …", img:"", a:"1, 2, 3, 7",
+o:["1, 2, 4, 7","1, 2, 3, 7","1, 2, 5, 7","1, 3, 6, 7","2, 4, 5, 7"]},
+
+{q:"Menentukan jalur produk adalah …", img:"", a:"Routing",
+o:["Evaluating","Routing","Scheduling","Dispatching","Follow Up"]}
 ];
 
-let current=0,score=0;
-const qnum=document.getElementById('qnum'), qtext=document.getElementById('qtext'), opts=document.getElementById('opts'), feedback=document.getElementById('feedback'), nextQ=document.getElementById('nextQ');
+// =========================
+// FUNGSI MENAMPILKAN SOAL
+// =========================
+function loadQuestion(){
+    if(i >= questions.length){
+        document.getElementById("scoreBox").innerHTML = 
+            "🎉 Selesai! Nilai kamu: " + score + "/" + questions.length;
+        document.getElementById("questionText").style.display = "none";
+        document.getElementById("choices").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("imageBox").innerHTML = "";
+        return;
+    }
 
-function loadQ(){
-  if(current>=quiz.length){qnum.textContent='Kuis Selesai'; qtext.textContent='Skor Anda: '+score+'/'+quiz.length; opts.innerHTML=''; feedback.innerHTML=''; nextQ.style.display='none'; return;}
-  qnum.textContent='Soal '+(current+1)+' / '+quiz.length;
-  qtext.textContent=quiz[current].q;
-  opts.innerHTML=''; feedback.innerHTML='';
-  quiz[current].opts.forEach((o,i)=>{
-    const b=document.createElement('div'); b.textContent=o; b.className='option';
-    b.onclick=()=>{
-      if(b.classList.contains('selected')) return;
-      document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected','correct','wrong'));
-      b.classList.add('selected');
-      if(i===quiz[current].ans){b.classList.add('correct'); feedback.textContent='Benar!'; score++;}else{b.classList.add('wrong'); feedback.textContent='Salah!';}
-      document.getElementById('score').textContent=score;
-    };
-    opts.appendChild(b);
-  });
+    let q = questions[i];
+
+    // Progress bar
+    let percent = Math.floor((i / questions.length) * 100);
+    document.getElementById("bar").style.width = percent + "%";
+
+    // Tampilkan soal
+    document.getElementById("questionText").innerHTML = (i+1) + ". " + q.q;
+
+    // Tampilkan gambar jika ada
+    if(q.img === "fragile"){
+        document.getElementById("imageBox").innerHTML =
+            `<img class="quizImage" src="${imgFragile}">`;
+    } else if(q.img === "intel"){
+        document.getElementById("imageBox").innerHTML =
+            `<img class="quizImage" src="${imgIntel}">`;
+    } else {
+        document.getElementById("imageBox").innerHTML = "";
+    }
+
+    // Tampilkan pilihan jawaban
+    let c = "";
+    q.o.forEach(v=>{
+        c += `<button onclick="checkAnswer('${v}')">${v}</button>`;
+    });
+    document.getElementById("choices").innerHTML = c;
+    document.getElementById("nextBtn").style.display = "none";
 }
-nextQ.onclick=()=>{current++; loadQ();}
-loadQ();
-</script>
 
+// =========================
+// CEK JAWABAN
+// =========================
+function checkAnswer(x){
+    let q = questions[i];
+
+    if(x === q.a){
+        score++;
+    } else {
+        wrong++;
+    }
+
+    // Jika salah 5 → game over
+    if(wrong >= 5){
+        document.getElementById("scoreBox").innerHTML =
+            "☠️ GAME OVER<br>Kamu salah 5 kali.";
+        document.getElementById("questionText").style.display = "none";
+        document.getElementById("choices").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("imageBox").innerHTML = "";
+        return;
+    }
+
+    document.getElementById("nextBtn").style.display = "block";
+}
+
+// =========================
+// NEXT QUESTION
+// =========================
+function nextQuestion(){
+    i++;
+    loadQuestion();
+}
+
+loadQuestion();
+</script>
 </body>
 </html>
 
