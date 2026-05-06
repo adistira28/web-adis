@@ -1,1 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DIMIGI ARAHAN</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Fira Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0 100px;
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero::after {
+            content: "</>";
+            font-family: 'Fira Code', monospace;
+            font-size: 140px;
+            opacity: 0.05;
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
+            color: #cbd5e1;
+        }
+        .hero .tagline {
+            margin-top: 24px;
+            background: rgba(59,130,246,0.2);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #0f172a;
+        }
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.8rem;
+        }
+        .section-title:after, .section-title:before {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 16px;
+        }
+        .team-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #eef2ff;
+            text-align: center;
+            cursor: pointer;
+        }
+        .team-card:hover {
+            transform: translateY(-6px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: #eef2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.8rem;
+            color: #1e40af;
+        }
+        .team-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .team-card .role {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .team-card .bio {
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: 0.2s;
+            border: 1px solid #eef2ff;
+        }
+        .gallery-item:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .gallery-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-color: #1e293b;
+        }
+        .gallery-caption {
+            padding: 20px;
+        }
+        .gallery-caption h4 {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .gallery-caption p {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        .month-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 22px 20px;
+            border-left: 5px solid #3b82f6;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+            border: 1px solid #e9eef3;
+            border-left-width: 5px;
+            cursor: pointer;
+        }
+        .month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .month-name {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #0f172a;
+            font-family: 'Fira Code', monospace;
+        }
+        .month-badge {
+            background: #e0f2fe;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #0369a1;
+        }
+        .month-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 12px 0 8px;
+            color: #1e293b;
+        }
+        .month-desc {
+            font-size: 0.85rem;
+            color: #334155;
+            line-height: 1.45;
+        }
+        .tech-stack {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tech-tag {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-family: 'Fira Code', monospace;
+            color: #0f3b6f;
+        }
+        .click-hint {
+            margin-top: 12px;
+            font-size: 0.7rem;
+            color: #3b82f6;
+            text-align: right;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            max-width: 550px;
+            width: 90%;
+            margin: 2rem auto;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.3s ease;
+            overflow: hidden;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .modal-header {
+            background: #0f172a;
+            color: white;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h3 {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.3rem;
+        }
+        .close-modal {
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .close-modal:hover {
+            color: #3b82f6;
+        }
+        .modal-body {
+            padding: 28px 28px;
+        }
+        .modal-body p {
+            margin-bottom: 16px;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0 10px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .social-link i {
+            font-size: 1.2rem;
+        }
+        .social-link:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 14px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .modal-img {
+            width: 100%;
+            border-radius: 20px;
+            margin: 15px 0;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .modal-detail-list {
+            margin: 16px 0 0 20px;
+        }
+        .quote-block {
+            background: #f1f5f9;
+            border-radius: 32px;
+            padding: 48px 32px;
+            text-align: center;
+            margin: 30px 0 30px;
+        }
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 48px 20px 32px;
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+            margin-top: 40px;
+        }
+        .btn-up {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            border-radius: 40px;
+            padding: 10px 28px;
+            margin-top: 24px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title:before, .section-title:after { display: none; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="container">
+        <h1>PKL DIMIGI ARAHAN &nbsp;| &nbsp;7 Persons</h1>
+        <p>Infrastruktur Jaringan · Cyber Security · Sistem Keamanan Siber<br>Dokumentasi resmi perjalanan 7 orang selama masa Praktik Kerja Lapangan.</p>
+        <div class="tagline"><i class="fas fa-shield-haltered"></i> from Dec '25 → Oct '26 </div>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-user-shield"></i> Identitas Anggota<i class="fas fa-network-wired"></i></h2>
+            <div class="team-grid" id="teamContainer"></div>
+            <p style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: #475569;"><i class="fas fa-hand-pointer"></i> Klik kartu anggota untuk melihat profil & media sosial</p>
+        </div>
+    </section>
+
+    <section style="background: #ffffff;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-camera"></i> Dokumentasi <i class="fas fa-diagram-project"></i></h2>
+            <div class="gallery" id="galleryContainer"></div>
+        </div>
+    </section>
+
+    <section style="background: #fefefe;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-timeline"></i>Perjalanan Waktu<i class="fas fa-mouse-pointer"></i></h2>
+            <div class="months-grid" id="monthsTimeline"></div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quote-block">
+            <i class="fas fa-quote-left" style="color:#3b82f6; font-size: 2rem;"></i>
+            <div class="quote-text" style="font-size:1.2rem;">"Dari konfigurasi router hingga penetration testing, 7 orang belajar bahwa keamanan bukan hanya tentang firewall, tapi juga tentang trust dan kolaborasi."</div>
+            <p style="margin-top: 18px; font-weight: 500;">— PKL Network & Security Division 2025</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-logo">&lt;7_PERSONS/&gt;</div>
+    <p>Dokumentasi lengkap project infrastruktur jaringan & cyber security<br>Selama 10 bulan penuh dedikasi: Desember 2025 – Oktober 2026</p>
+    <a href="#" class="btn-up" id="backToTop"><i class="fas fa-arrow-up"></i> Back to Top</a>
+    <div style="margin-top: 30px; font-size: 0.75rem;">© 2025 7 Engineers — PKL Network & Cyber Security</div>
+</footer>
+
+<div id="globalModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Detail</h3>
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    const teamMembers = [
+        { 
+            name: "Adistira Rizqi Ramadani", role: "Network Engineer", avatarIcon: "🌐", 
+            bio: "Merancang topologi & subnetting, optimalisasi routing.",
+            fullBio: "Berjalan dengan pasti, meski tanpa kepastian.",
+            instagram: "https://www.instagram.com/adistraaa?igsh=MTBsdXA4ems3ZjRscA==", linkedin: "https://www.linkedin.com/in/adistira/", email: "adistirarizqir@gmail.com"
+        },
+        { 
+            name: "Fatihatur Rizqi Safar", role: "Network Engineer", avatarIcon: "🌐", 
+            bio: "Merancang topologi & subnetting, optimalisasi routing.",
+            fullBio: "Motivasi membuatmu mulai, tapi disiplin membuatmu sampai.",
+            instagram: "https://www.instagram.com/dpooonggg", linkedin: "https://www.linkedin.com/in/fatihatur-rizqi-safar-b7350538b/", email: "fatihatur12345@gmail.com"
+        },
+        { 
+            name: "Muhammad Syaugie Pratama", role: "Network Engineer", avatarIcon: "🌐", 
+            bio: "Merancang topologi & subnetting, optimalisasi routing.",
+            fullBio: "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya.",
+            instagram: "https://www.instagram.com/muhammad_syaugie?utm_source=qr&igsh=MTJxa2x3aHZrODQ4eQ==", linkedin: "https://www.linkedin.com/in/muhammad-syaugie-242023315", email: "azkamaulidaaca@gmail.com"
+        },
+        { 
+            name: "Haikal Devin Prayata", role: "Cyber Security", avatarIcon: "🛡️", 
+            bio: "Ethical hacking & reporting celah keamanan infrastruktur.",
+            fullBio: "jangan mengeluh kalau Tuhan tidak memberi hidup yang kamu inginkan, karena kamu juga hidup tidak seperti yang Tuhan inginkan.",
+            instagram: "https://www.instagram.com/devinhp5?igsh=MWhqdG5ubDh3cml6YQ==", linkedin: "https://www.linkedin.com/in/haikal-devin-prayata-6ab57532b/", email: "mk.haikaldevin@dimigi.co.id"
+        },
+        { 
+            name: "Tirta Bimoseno Wibowo", role: "Cyber Security", avatarIcon: "🛡️", 
+            bio: "Ethical hacking & reporting celah keamanan infrastruktur.",
+            fullBio: "Hari ini adalah hari yang baik untuk mencoba.",
+            instagram: "https://www.instagram.com/dmmmooo/", linkedin: "https://www.linkedin.com/in/tirta-bimoseno-wibowo-a241a5382/", email: "mk.bimoseno@dimigi.co.id"
+        },
+        { 
+            name: "Eko Dimas Prasetyo", role: "SOC", avatarIcon: "🛡️", 
+            bio: "Analis event log, incident response, threat hunting.",
+            fullBio: "Ingat ada harapan keluarga yang harus kamu gapai.",
+            instagram: "https://www.instagram.com/dzy.eko?igsh=cGJ0aTU2Z3VuN2Fp", linkedin: "https://www.linkedin.com/in/eko-dimas-prasetyo-81a240342?utm_source=share_via&utm_content=profile&utm_medium=member_android", email: "ekodimasprasetyo3@gmail.com"
+        },
+        { 
+            name: "Waly Alfathah", role: "SOC", avatarIcon: "🛡️", 
+            bio: "Analis event log, incident response, threat hunting.",
+            fullBio: "Percaya Dengan Rencana Tuhan.",
+            instagram: "https://www.instagram.com/wallyaft/", linkedin: "https://www.linkedin.com/in/waly-al-fathah-b9b780327/?skipRedirect=true", email: "walyalfathah@gmail.com"
+        }
+    ];
+
+    const galleryItems = [
+        { title: "Rack Server & Switch Config", desc: "Setup awal perangkat keras untuk simulasi jaringan.", imgUrl: "https://res.cloudinary.com/dl2dlszsr/image/upload/v1777521781/download_wy1wxs.webp" },
+        { title: "Firewall Rules Workshop", desc: "Implementasi aturan firewall dan monitoring.", imgUrl: "https://res.cloudinary.com/dl2dlszsr/image/upload/v1777523343/69a04b91d1ecf95ea92e67fd_Cisco_logo_blue_2016.svg_txbiae.png" },
+        { title: "Forensic & Audit", desc: "Diskusi analisis log dan forensik jaringan.", imgUrl: "https://picsum.photos/id/26/400/280" },
+        { title: "Penetration Testing Lab", desc: "Simulasi serangan & hardening sistem.", imgUrl: "https://picsum.photos/id/91/400/280" },
+        { title: "Security Awareness", desc: "Pelatihan untuk staff tentang cyber hygiene.", imgUrl: "https://picsum.photos/id/169/400/280" },
+        { title: "Project Closure", desc: "Penyerahan sertifikat dan apresiasi.", imgUrl: "https://picsum.photos/id/77/400/280" },
+        { title: "Team Collaboration", desc: "Malam finalisasi laporan & dokumentasi.", imgUrl: "https://picsum.photos/id/106/400/280" }
+    ];
+
+    const monthlyLogs = [
+        { monthPeriod: "Des 2025", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/20/500/300" },
+        { monthPeriod: "Jan 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/48/500/300" },
+        { monthPeriod: "Feb 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/0/500/300" },
+        { monthPeriod: "Mar 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/91/500/300" },
+        { monthPeriod: "Apr 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/26/500/300" },
+        { monthPeriod: "Mei 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/169/500/300" },
+        { monthPeriod: "Jun 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/106/500/300" },
+        { monthPeriod: "Jul 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/2/500/300" },
+        { monthPeriod: "Agu 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/77/500/300" },
+        { monthPeriod: "Sep 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/30/500/300" },
+        { monthPeriod: "Okt 2026", title: "Network Infrastructure, Security & Virtualization", descContent: "Pengenalan infrastruktur, tool security.", tags: ["ENSP", "VMware","Cisco"], detailed: "Mengelola keamanan, virtualisasi, dan sistem jaringan terintegrasi.", image: "https://picsum.photos/id/155/500/300" }
+    ];
+
+    function renderTeam() {
+        const container = document.getElementById('teamContainer');
+        if (container) {
+            container.innerHTML = teamMembers.map((m, idx) => `
+                <div class="team-card" data-team-index="${idx}">
+                    <div class="avatar">${m.avatarIcon}</div>
+                    <h3>${m.name}</h3>
+                    <div class="role"><i class="fas fa-terminal"></i> ${m.role}</div>
+                    <p class="bio">${m.bio}</p>
+                </div>
+            `).join('');
+        }
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const idx = card.getAttribute('data-team-index');
+                if (idx !== null) openTeamModal(parseInt(idx));
+            });
+        });
+    }
+
+    function openTeamModal(index) {
+        const member = teamMembers[index];
+        const modal = document.getElementById('globalModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalTitle.innerHTML = `<i class="fas fa-user-astronaut"></i> ${member.name} · ${member.role}`;
+        modalBody.innerHTML = `
+            <div style="text-align:center; margin-bottom:12px;">
+                <div style="font-size:4rem;">${member.avatarIcon}</div>
+            </div>
+            <p><strong>📋 Tentang:</strong> ${member.fullBio}</p>
+            <div class="contact-item"><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></div>
+            <div class="social-links">
+                <a href="${member.instagram}" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="${member.linkedin}" target="_blank" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <p style="margin-top:18px;"><i class="fas fa-code"></i> "Berkolaborasi dalam keamanan siber dan infrastruktur jaringan"</p>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    function renderGallery() {
+        const galleryDiv = document.getElementById('galleryContainer');
+        if (galleryDiv) {
+            galleryDiv.innerHTML = galleryItems.map(item => `
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-image: url('${item.imgUrl}'); background-size: cover;"></div>
+                    <div class="gallery-caption">
+                        <h4><i class="fas fa-shield-alt"></i> ${item.title}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    function renderTimeline() {
+        const monthsGrid = document.getElementById('monthsTimeline');
+        if (!monthsGrid) return;
+        monthsGrid.innerHTML = monthlyLogs.map((month, idx) => `
+            <div class="month-card" data-month-index="${idx}">
+                <div class="month-header">
+                    <span class="month-name">📅 ${month.monthPeriod}</span>
+                    <span class="month-badge"><i class="fas fa-code-branch"></i> phase</span>
+                </div>
+                <div class="month-title"><i class="fas fa-network-wired"></i> ${month.title}</div>
+                <div class="month-desc">${month.descContent}</div>
+                <div class="tech-stack">
+                    ${month.tags.map(tag => `<span class="tech-tag">#${tag}</span>`).join('')}
+                </div>
+                <div class="click-hint"><i class="fas fa-hand-pointer"></i> Klik untuk detail</div>
+            </div>
+        `).join('');
+
+        document.querySelectorAll('.month-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const idx = card.getAttribute('data-month-index');
+                if (idx !== null) openMonthModal(parseInt(idx));
+            });
+        });
+    }
+
+    function openMonthModal(monthIndex) {
+        const data = monthlyLogs[monthIndex];
+        const modal = document.getElementById('globalModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalTitle.innerHTML = `<i class="fas fa-calendar-alt"></i> ${data.monthPeriod} · ${data.title}`;
+        modalBody.innerHTML = `
+            <img src="${data.image}" alt="Momen ${data.monthPeriod}" class="modal-img" onerror="this.src='https://picsum.photos/id/1/500/300'">
+            <p><strong>📌 Penjelasan Lengkap:</strong> ${data.detailed}</p>
+            <ul class="modal-detail-list">
+                <li><i class="fas fa-microchip"></i> <strong>Tools:</strong> ${data.tags.join(', ')}</li>
+                <li><i class="fas fa-chart-line"></i> <strong>Capaian:</strong> Tim berhasil menyelesaikan fase ini dengan outstanding.</li>
+            </ul>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    const modal = document.getElementById('globalModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    function closeModal() { modal.style.display = 'none'; }
+    window.onclick = function(e) { if (e.target === modal) closeModal(); };
+    closeBtn.onclick = closeModal;
+
+    document.getElementById('backToTop')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    renderTeam();
+    renderGallery();
+    renderTimeline();
+
+    const observerElements = document.querySelectorAll('.team-card, .gallery-item, .month-card, .quote-block');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    observerElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.4s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
